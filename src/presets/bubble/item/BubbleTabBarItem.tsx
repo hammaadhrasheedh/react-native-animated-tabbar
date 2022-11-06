@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import { interpolateColor, useValue } from 'react-native-redash';
 // @ts-ignore 😞
 import isEqual from 'lodash.isequal';
-import { interpolate } from '../../../utilities';
+import { interpolateNode } from '../../../utilities';
 import type { BubbleTabBarItemProps } from '../types';
 import { styles } from './styles';
 
@@ -56,7 +56,7 @@ const BubbleTabBarItemComponent = ({
     {
       paddingHorizontal: outerHorizontalSpace,
       paddingVertical: outerVerticalSpace,
-      width: interpolate(animatedFocus, {
+      width: interpolateNode(animatedFocus, {
         inputRange: [0, 1],
         outputRange: [minWidth, maxWidth],
       }),
@@ -78,11 +78,11 @@ const BubbleTabBarItemComponent = ({
   const labelContainerStyle = [
     styles.labelContainer,
     {
-      opacity: interpolate(animatedFocus, {
+      opacity: interpolateNode(animatedFocus, {
         inputRange: [0.33, 1],
         outputRange: [0, 1],
       }),
-      [isRTL ? 'left' : 'right']: interpolate(animatedFocus, {
+      [isRTL ? 'left' : 'right']: interpolateNode(animatedFocus, {
         inputRange: [0, 1],
         outputRange: [0, innerHorizontalSpace + outerHorizontalSpace],
       }),

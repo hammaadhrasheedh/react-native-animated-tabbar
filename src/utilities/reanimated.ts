@@ -6,8 +6,8 @@ const {
 export const Easing = EasingV2 || EasingV1;
 
 const {
-  interpolate: interpolateV1,
+  interpolateNode: interpolateV1,
   interpolateNode: interpolateV2,
 } = require('react-native-reanimated');
 
-export const interpolate = interpolateV2 || interpolateV1;
+export const interpolateNode = interpolateV2 || interpolateV1;

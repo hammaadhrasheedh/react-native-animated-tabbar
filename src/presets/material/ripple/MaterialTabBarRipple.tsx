@@ -17,7 +17,7 @@ import Animated, {
 // @ts-ignore 😞
 import isEqual from 'lodash.isequal';
 import { useValues, get, useValue } from 'react-native-redash';
-import { interpolate } from '../../../utilities';
+import { interpolateNode } from '../../../utilities';
 import type { MaterialTabBarItemConfig } from '../types';
 import { styles } from './styles';
 
@@ -76,7 +76,7 @@ const MaterialTabBarRippleComponent = ({
   const animatedRadius = animatedXs.map(x =>
     add(width / 2, abs(sub(width / 2, x)))
   );
-  const animatedCircleRadius = interpolate(animatedValue, {
+  const animatedCircleRadius = interpolateNode(animatedValue, {
     inputRange: [0, 1],
     outputRange: [0, get(animatedRadius, selectedIndex, new Animated.Value(0))],
     extrapolate: Extrapolate.CLAMP,

@@ -12,7 +12,7 @@ import {
   DEFAULT_INDICATOR_SIZE,
   DEFAULT_INDICATOR_COLOR,
 } from '../constants';
-import { interpolate } from '../../../utilities';
+import { interpolateNode } from '../../../utilities';
 import type { FlashyTabBarItemProps } from '../types';
 import { styles } from './styles';
 
@@ -97,7 +97,7 @@ const FlashyTabBarItemComponent = ({
     {
       transform: [
         {
-          translateY: interpolate(animatedFocus, {
+          translateY: interpolateNode(animatedFocus, {
             inputRange: [0, 1],
             outputRange: [
               multiply(labelHeight, 0.5),
@@ -121,7 +121,7 @@ const FlashyTabBarItemComponent = ({
           y: 0,
         },
         {
-          translateY: interpolate(animatedFocus, {
+          translateY: interpolateNode(animatedFocus, {
             inputRange: [0.25, 1],
             outputRange: [
               0,
@@ -129,7 +129,7 @@ const FlashyTabBarItemComponent = ({
             ],
             extrapolate: Extrapolate.CLAMP,
           }),
-          rotate: interpolate(animatedFocus, {
+          rotate: interpolateNode(animatedFocus, {
             inputRange: [0, 0.5],
             outputRange: [toRad(0), toRad(isRTL ? -15 : 15)],
             extrapolate: Extrapolate.CLAMP,
@@ -144,7 +144,7 @@ const FlashyTabBarItemComponent = ({
     {
       transform: [
         {
-          translateY: interpolate(animatedFocus, {
+          translateY: interpolateNode(animatedFocus, {
             inputRange: [0, 1],
             outputRange: [iconSize * -0.5, iconSize * -1.5],
             extrapolate: Extrapolate.CLAMP,
@@ -171,12 +171,12 @@ const FlashyTabBarItemComponent = ({
           y: 0,
         },
         {
-          translateY: interpolate(animatedFocus, {
+          translateY: interpolateNode(animatedFocus, {
             inputRange: [0, 1],
             outputRange: [innerVerticalSpace, iconSize * -1.5],
             extrapolate: Extrapolate.CLAMP,
           }),
-          rotate: interpolate(animatedFocus, {
+          rotate: interpolateNode(animatedFocus, {
             inputRange: [0, 0.5],
             outputRange: [0, toRad(isRTL ? -15 : 15)],
             extrapolate: Extrapolate.CLAMP,
@@ -186,7 +186,7 @@ const FlashyTabBarItemComponent = ({
     },
   ];
   // indicator
-  const animatedIndicatorSize = interpolate(animatedFocus, {
+  const animatedIndicatorSize = interpolateNode(animatedFocus, {
     inputRange: [0.5, 1],
     outputRange: [0, indicatorSize / 2],
     extrapolate: Extrapolate.CLAMP,

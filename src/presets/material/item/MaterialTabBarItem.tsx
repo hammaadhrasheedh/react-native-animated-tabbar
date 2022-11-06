@@ -5,7 +5,7 @@ import { transformOrigin, useValue } from 'react-native-redash';
 // @ts-ignore 😞
 import isEqual from 'lodash.isequal';
 import { useStableCallback } from '../../../hooks';
-import { interpolate } from '../../../utilities';
+import { interpolateNode } from '../../../utilities';
 import type { MaterialTabBarItemProps } from '../types';
 import { styles } from './styles';
 
@@ -55,7 +55,7 @@ const MaterialTabBarItemComponent = (props: MaterialTabBarItemProps) => {
       {
         paddingHorizontal: innerHorizontalSpace,
         paddingVertical: innerVerticalSpace,
-        opacity: interpolate(animatedFocus, {
+        opacity: interpolateNode(animatedFocus, {
           inputRange: [0, 1],
           outputRange: [inactiveOpacity, 1],
           extrapolate: Extrapolate.CLAMP,
@@ -66,7 +66,7 @@ const MaterialTabBarItemComponent = (props: MaterialTabBarItemProps) => {
             y: 0,
           },
           {
-            scale: interpolate(animatedFocus, {
+            scale: interpolateNode(animatedFocus, {
               inputRange: [0, 1],
               outputRange: [inactiveScale, 1],
               extrapolate: Extrapolate.CLAMP,
@@ -96,7 +96,7 @@ const MaterialTabBarItemComponent = (props: MaterialTabBarItemProps) => {
                 y: 0,
               },
               {
-                translateY: interpolate(animatedFocus, {
+                translateY: interpolateNode(animatedFocus, {
                   inputRange: [0, 1],
                   outputRange: [divide(labelHeight, 2), 0],
                   extrapolate: Extrapolate.CLAMP,

@@ -2,7 +2,7 @@ import React, { useMemo, useCallback, useEffect, useRef } from 'react';
 import type { LayoutChangeEvent } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { AnimatedTabBarView } from './AnimatedTabBarView';
-import { interpolate } from './utilities';
+import { interpolateNode } from './utilities';
 import { useTabBarVisibility, useStableCallback } from './hooks';
 import type { PresetEnum } from './presets';
 import type { AnimatedTabBarProps } from './types';
@@ -156,7 +156,7 @@ export function AnimatedTabBar<T extends PresetEnum>(
       right: 0,
       transform: [
         {
-          translateY: interpolate(shouldShowTabBarAnimated, {
+          translateY: interpolateNode(shouldShowTabBarAnimated, {
             inputRange: [0, 1],
             outputRange: [tabBarHeight, 0],
             extrapolate: Extrapolate.CLAMP,
